@@ -1,35 +1,30 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Navigation;
 
 namespace WPFStartTutorial
 {
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            DataContext = this;
             InitializeComponent();
         }
-        private string boundText;
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public string BoundText
+        private void btnFire_Click( object sender, RoutedEventArgs e)
         {
-            get { return boundText; }
-            set 
-             {
-                //whenever this setter is set invoke the event that this property(BoundText) has changed
-
-                boundText = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BoundText"));
+            //MessageBox.Show("Your message here.","ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBoxResult result = MessageBox.Show("Do you agree?", "Agreement.",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                tblInfo.Text = "Agreed";
             }
-        }
-
-        private void btnSet_Click(object sender, RoutedEventArgs e)
-        {
-            BoundText = "set from code";
+            else
+            {
+                tblInfo.Text = "Not Agreed";
+            }
         }
     }
 } 
