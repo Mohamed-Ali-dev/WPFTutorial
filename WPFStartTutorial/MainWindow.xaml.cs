@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
 using winForms = System.Windows.Forms;
 namespace WPFStartTutorial
 {
@@ -9,42 +10,35 @@ namespace WPFStartTutorial
             InitializeComponent();
         }
 
-        private void btnFire_Click( object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.InitialDirectory = "D:\\Projects\\WPF\\WPFStartTutorial\\WPFStartTutorial";
-            winForms.DialogResult result=  dialog.ShowDialog();
-
-            if(result == winForms.DialogResult.OK)
-            {
-                string folder = dialog.SelectedPath;
-            }
-
-
-            //OpenFileDialog fileDialog = new OpenFileDialog();
-            ////Select just the .pdf files
-            //fileDialog.Filter = "pdf Source Files | *.pdf";
-            ////specify initial directory to open. 
-            ////if the path is not found it will open the default directory 
-            //fileDialog.InitialDirectory = "D:\\Projects\\WPF\\WPFStartTutorial";
-            ////To add a title for the dialog 
-            //fileDialog.Title = "Please select  pdf file(s)";
-            ////Allow multi selection
-            //fileDialog.Multiselect = true;
-
-            //bool? success = fileDialog.ShowDialog();
-            //if(success == true)
-            //{
-            //    string[] paths = fileDialog.FileNames;
-            //    //The file name with no path
-            //    string[] fileNames = fileDialog.SafeFileNames;
-            //     //tblInfo.Text = fileName;
-
-            //}
-            //else
-            //{
-
-            //}
+            lvEntries.Items.Add(txtEntry.Text);
+            txtEntry.Clear();
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            //int index = lvEntries.SelectedIndex;
+            //object item = lvEntries.SelectedItem;
+
+            var items = lvEntries.SelectedItems;
+            var result = System.Windows.MessageBox.Show($"Are you sure you want to delete {items.Count} items?", "Sure?", MessageBoxButton.YesNo);
+            //If the items list have one value after removing it the foreach loop
+            //will be crashed so we create another loop to iterate on 
+            if (result == MessageBoxResult.Yes)
+            {
+                var itemsList = new ArrayList(items);
+                foreach (var item in itemsList)
+                {
+                    lvEntries.Items.Remove(item);
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            lvEntries.Items.Clear();
+        }
+    }
     }
 }  
