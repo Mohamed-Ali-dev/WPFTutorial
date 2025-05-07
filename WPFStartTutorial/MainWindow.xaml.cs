@@ -1,6 +1,5 @@
-﻿using Microsoft.Win32;
-using System.Windows;
-
+﻿using System.Windows;
+using winForms = System.Windows.Forms;
 namespace WPFStartTutorial
 {
     public partial class MainWindow : Window
@@ -12,33 +11,40 @@ namespace WPFStartTutorial
 
         private void btnFire_Click( object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            //Select just the .pdf files
-            fileDialog.Filter = "pdf Source Files | *.pdf";
-            //specify initial directory to open. 
-            //if the path is not found it will open the default directory 
-            fileDialog.InitialDirectory = "D:\\Projects\\WPF\\WPFStartTutorial";
-            //To add a title for the dialog 
-            fileDialog.Title = "Please select  pdf file(s)";
-            //Allow multi selection
-            fileDialog.Multiselect = true;
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.InitialDirectory = "D:\\Projects\\WPF\\WPFStartTutorial\\WPFStartTutorial";
+            winForms.DialogResult result=  dialog.ShowDialog();
 
-            bool? success = fileDialog.ShowDialog();
-            if(success == true)
+            if(result == winForms.DialogResult.OK)
             {
-                string[] paths = fileDialog.FileNames;
-                //The file name with no path
-                string[] fileNames = fileDialog.SafeFileNames;
-                foreach (var fileName in fileNames)
-                {
-                    tblInfo.Text = fileName;
-
-                }
+                string folder = dialog.SelectedPath;
             }
-            else
-            {
 
-            }
+
+            //OpenFileDialog fileDialog = new OpenFileDialog();
+            ////Select just the .pdf files
+            //fileDialog.Filter = "pdf Source Files | *.pdf";
+            ////specify initial directory to open. 
+            ////if the path is not found it will open the default directory 
+            //fileDialog.InitialDirectory = "D:\\Projects\\WPF\\WPFStartTutorial";
+            ////To add a title for the dialog 
+            //fileDialog.Title = "Please select  pdf file(s)";
+            ////Allow multi selection
+            //fileDialog.Multiselect = true;
+
+            //bool? success = fileDialog.ShowDialog();
+            //if(success == true)
+            //{
+            //    string[] paths = fileDialog.FileNames;
+            //    //The file name with no path
+            //    string[] fileNames = fileDialog.SafeFileNames;
+            //     //tblInfo.Text = fileName;
+
+            //}
+            //else
+            //{
+
+            //}
         }
     }
 }  

@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace WPFStartTutorial.View.UserControls
 {
 
-    public partial class ClearableTextBox : UserControl
+    public partial class ClearableTextBox : System.Windows.Controls.UserControl
     {
         public ClearableTextBox()
         {
