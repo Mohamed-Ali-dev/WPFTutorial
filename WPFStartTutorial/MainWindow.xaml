@@ -23,6 +23,7 @@
                 HorizontalAlignment="Left" Margin="60,0,0,0"/>
         <Button Grid.Column="1" Name="btnClear" Width="50" Content="Clr" Click="btnClear_Click"
                 HorizontalAlignment="Left" Margin="120,0,0,0"/>
-        <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2" ></ListView>
+        <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Entries}"
+                  />
     </Grid>
 </Window>

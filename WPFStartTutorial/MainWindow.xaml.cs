@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.ObjectModel;
+using System.Reflection.Metadata;
 using System.Windows;
 using winForms = System.Windows.Forms;
 namespace WPFStartTutorial
@@ -7,38 +9,35 @@ namespace WPFStartTutorial
     {
         public MainWindow()
         {
+            DataContext = this;
+            entries = new ObservableCollection<string>();
             InitializeComponent();
+           
+        }
+        private ObservableCollection<string> entries;
+
+        public ObservableCollection<string> Entries
+        {
+            get { return entries; }
+            set { entries = value; }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            lvEntries.Items.Add(txtEntry.Text);
-            txtEntry.Clear();
+            //using the property which is bound to the ui instead of accessing it throw the gui lvEntries 
+            Entries.Add(txtEntry.Text);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //int index = lvEntries.SelectedIndex;
-            //object item = lvEntries.SelectedItem;
-
-            var items = lvEntries.SelectedItems;
-            var result = System.Windows.MessageBox.Show($"Are you sure you want to delete {items.Count} items?", "Sure?", MessageBoxButton.YesNo);
-            //If the items list have one value after removing it the foreach loop
-            //will be crashed so we create another loop to iterate on 
-            if (result == MessageBoxResult.Yes)
-            {
-                var itemsList = new ArrayList(items);
-                foreach (var item in itemsList)
-                {
-                    lvEntries.Items.Remove(item);
-                }
-            }
+           string selectedItem =  (string)lvEntries.SelectedItem;
+            Entries.Remove(selectedItem);
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            lvEntries.Items.Clear();
+            Entries.Clear();
         }
-    }
+    
     }
 }  
