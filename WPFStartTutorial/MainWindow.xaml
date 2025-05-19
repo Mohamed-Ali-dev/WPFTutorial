@@ -9,41 +9,35 @@
         Title="MainWindow" Height="400" Width="400">
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <!--used when you need to add similer items with fixed alignment--> 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Height="40" Width="65" Margin="2" Content="A"/>
-            <Button Height="40" Width="65" Margin="2" Content="B"/>
-            <Button Height="40" Width="65" Margin="2" Content="C"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
-                <Label Content="Label: "/>
-                <TextBox Width="150"/>
-                <Button Content="GO"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
-                <Label Content="Label: "/>
-                <TextBox Width="150"/>
-                <Button Content="GO"/>
+        <Rectangle Fill="Red"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="Yellow"/>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+            <Rectangle Grid.Column="2" Fill="Orange"/>
+            <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch"/>
+            <Rectangle Grid.Column="4" Fill="Green"/>
+        </Grid>
+        <!--we have to carefull when using the GridSplitter, when trying to 
+        split two grid with fixed size it may lead to shrink the grid
+        because its size would become less than the size of the window.-->
+        
+        <!--so the recommended behavior is to use the GridSplitter between
+        two grid with star size or auto size, ir at least one of them .-->
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch"/>
 
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
-                <Label Content="Label: "/>
-                <TextBox Width="150"/>
-                <Button Content="GO"/>
-
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
-                <Label Content="Label: "/>
-                <TextBox Width="150"/>
-                <Button Content="GO"/>
-
-            </StackPanel>
-            <ComboBox Width="150" Height="30" Margin="2"/>
-            <TextBox Width="150" Height="30" Margin="2"/>
-        </StackPanel>
+        <Rectangle Grid.Row="3" Fill="Blue"/>
+        
     </Grid>
 </Window>
