@@ -6,24 +6,44 @@
         xmlns:local="clr-namespace:WPFStartTutorial"
         xmlns:userControls="clr-namespace:WPFStartTutorial.View.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="600">
+        Title="MainWindow" Height="400" Width="400">
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition />
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <TextBox Name="txtEntry" Height="35" FontSize="16"/>
-        <Button Grid.Column="1" Name="btnAdd" Width="50" Content="Add" Click="btnAdd_Click"
-                HorizontalAlignment="Left"/>
-        <Button Grid.Column="1" Name="btnDelete" Width="50" Content="Del" Click="btnDelete_Click"
-                HorizontalAlignment="Left" Margin="60,0,0,0"/>
-        <Button Grid.Column="1" Name="btnClear" Width="50" Content="Clr" Click="btnClear_Click"
-                HorizontalAlignment="Left" Margin="120,0,0,0"/>
-        <ListView Name="lvEntries" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Entries}"
-                  />
+        <!--used when you need to add similer items with fixed alignment--> 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="40" Width="65" Margin="2" Content="A"/>
+            <Button Height="40" Width="65" Margin="2" Content="B"/>
+            <Button Height="40" Width="65" Margin="2" Content="C"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="20">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
+                <Label Content="Label: "/>
+                <TextBox Width="150"/>
+                <Button Content="GO"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
+                <Label Content="Label: "/>
+                <TextBox Width="150"/>
+                <Button Content="GO"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
+                <Label Content="Label: "/>
+                <TextBox Width="150"/>
+                <Button Content="GO"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="center">
+                <Label Content="Label: "/>
+                <TextBox Width="150"/>
+                <Button Content="GO"/>
+
+            </StackPanel>
+            <ComboBox Width="150" Height="30" Margin="2"/>
+            <TextBox Width="150" Height="30" Margin="2"/>
+        </StackPanel>
     </Grid>
 </Window>
