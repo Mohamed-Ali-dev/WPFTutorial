@@ -12,17 +12,11 @@ namespace WPFStartTutorial
             InitializeComponent();
            
         }
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-        }
+        
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
+            expanderDetails.IsExpanded = !expanderDetails.IsExpanded;
         }
-
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-        }
-    
     }
 }  

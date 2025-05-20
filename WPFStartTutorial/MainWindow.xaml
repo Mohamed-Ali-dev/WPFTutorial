@@ -8,36 +8,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400">
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="10"/>
-        </Grid.RowDefinitions>
-        <Rectangle Fill="Red"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Fill="Yellow"/>
-            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
-            <Rectangle Grid.Column="2" Fill="Orange"/>
-            <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch"/>
-            <Rectangle Grid.Column="4" Fill="Green"/>
-        </Grid>
-        <!--we have to carefull when using the GridSplitter, when trying to 
-        split two grid with fixed size it may lead to shrink the grid
-        because its size would become less than the size of the window.-->
-        
-        <!--so the recommended behavior is to use the GridSplitter between
-        two grid with star size or auto size, ir at least one of them .-->
-        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="LightGray">
+            <TextBlock Text="Name" FontSize="16"/>
+            <Expander Header="More details">
+                <TextBlock Text="Description" FontSize="16"/>
+            </Expander>
+            <Button Name="btnDetails" Width="100" Height="25" 
+                    Content="Details" Click="btnDetails_Click"/>
+        </StackPanel>
+        <Expander Name="expanderDetails" Grid.Column="1" ExpandDirection="Left"
+                  Background="DarkGray" BorderThickness="0">
+            <Rectangle  Fill="DarkGray" Width="125"/>
 
-        <Rectangle Grid.Row="3" Fill="Blue"/>
-        
+        </Expander>
     </Grid>
 </Window>
