@@ -8,22 +8,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400">
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Background="LightGray">
-            <TextBlock Text="Name" FontSize="16"/>
-            <Expander Header="More details">
-                <TextBlock Text="Description" FontSize="16"/>
-            </Expander>
-            <Button Name="btnDetails" Width="100" Height="25" 
-                    Content="Details" Click="btnDetails_Click"/>
-        </StackPanel>
-        <Expander Name="expanderDetails" Grid.Column="1" ExpandDirection="Left"
-                  Background="DarkGray" BorderThickness="0">
-            <Rectangle  Fill="DarkGray" Width="125"/>
-
-        </Expander>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      HorizontalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBox Height="30" Width="200" Margin="10"/>
+                <TextBox Height="30" Width="200" Margin="10"/>
+                <TextBox Height="30" Width="200" Margin="10"/>
+                <TextBox Height="30" Width="200" Margin="10"/>
+                <TextBox Height="30" Width="200" Margin="10"/>
+                <TextBox Height="30" Width="200" Margin="10"/>
+                <TextBox Height="30" Width="200" Margin="10"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

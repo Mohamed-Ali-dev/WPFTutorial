@@ -14,9 +14,6 @@ namespace WPFStartTutorial
         }
         
 
-        private void btnDetails_Click(object sender, RoutedEventArgs e)
-        {
-            expanderDetails.IsExpanded = !expanderDetails.IsExpanded;
-        }
+       
     }
 }  
