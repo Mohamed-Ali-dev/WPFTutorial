@@ -6,28 +6,15 @@
         xmlns:local="clr-namespace:WPFStartTutorial"
         xmlns:userControls="clr-namespace:WPFStartTutorial.View.UserControls"
         mc:Ignorable="d" 
-        WindowStyle="None"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Background="#333333"
         Title="MainWindow" Height="400" Width="400">
     <!--To control the top par od the window-->
-    <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
-    </WindowChrome.WindowChrome>
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-    
-            <Button x:Name="btnMinimiaze" Content="_" Width="30" Height="40" Click="btnMinimiaze_Click"
-           BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
-
-            <Button x:Name="btnMaximize" Content="◘" Width="30" Height="40" Click="btnMaximize_Click"
-           BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
-            <Button x:Name="btnClose" Content="X" Width="30" Height="40" Click="btnClose_Click"
-                BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
+        <StackPanel>
+            <Button Name="btnNormal" Width="100" Height="40" 
+                    Content="Normal" Margin="5" Click="btnNormal_Click"/> 
+            <Button Name="btnModel" Width="100" Height="40"
+                    Content="Model" Margin="5" Click="btnModel_Click"/>
+            <TextBox Name="txtInput" Width="200" Height="40" FontSize="20"/>
         </StackPanel>
     </Grid>
 </Window>

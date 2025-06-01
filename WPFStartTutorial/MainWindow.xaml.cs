@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.ObjectModel;
-using System.Reflection.Metadata;
+﻿
 using System.Windows;
+using WPFStartTutorial.View;
 //using winForms = System.Windows.Forms;
 namespace WPFStartTutorial
 {
@@ -13,34 +12,25 @@ namespace WPFStartTutorial
            
         }
 
-        private void Window_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void btnNormal_Click(object sender, RoutedEventArgs e)
         {
-            DragMove();
+            NormalWindow normalWindow = new NormalWindow();
+            //Open a new window and the main window will not be blocked
+            normalWindow.Show();
         }
 
-        private void btnMinimiaze_Click(object sender, RoutedEventArgs e)
+        private void btnModel_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized; //minimize the window
-        }
+            //pass the current window as the owner of the model window
+            ModelWindow modelWindow = new ModelWindow(this);
+            Opacity = 0.7;
+            //Open a new window and the main window and any other windows 
+            //will be blocked and 
 
-        private void btnMaximize_Click(object sender, RoutedEventArgs e)
-        {
-            if(WindowState == WindowState.Maximized)
-            {
-                WindowState = WindowState.Normal; //if the window is maximized, set it to normal
-            }
-            else
-            {
-                WindowState = WindowState.Maximized; //if the window is not maximized, set it to maximized
-            }
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            //close the application from the main window,
-            //if used in another window, it will close that window only
-            //Close();
-            System.Windows.Application.Current.Shutdown(); //this will close the application
+            modelWindow.ShowDialog();
+            Opacity = 1.0;
+            if (modelWindow.Success)
+                txtInput.Text = modelWindow.Input;
         }
     }
 }  
