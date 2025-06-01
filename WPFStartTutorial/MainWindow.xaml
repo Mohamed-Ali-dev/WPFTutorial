@@ -5,20 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFStartTutorial"
         xmlns:userControls="clr-namespace:WPFStartTutorial.View.UserControls"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
+        WindowStyle="None"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Background="#333333"
         Title="MainWindow" Height="400" Width="400">
+    <!--To control the top par od the window-->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
     <Grid >
-        <ScrollViewer VerticalScrollBarVisibility="Auto" 
-                      HorizontalScrollBarVisibility="Auto">
-            <StackPanel>
-                <TextBox Height="30" Width="200" Margin="10"/>
-                <TextBox Height="30" Width="200" Margin="10"/>
-                <TextBox Height="30" Width="200" Margin="10"/>
-                <TextBox Height="30" Width="200" Margin="10"/>
-                <TextBox Height="30" Width="200" Margin="10"/>
-                <TextBox Height="30" Width="200" Margin="10"/>
-                <TextBox Height="30" Width="200" Margin="10"/>
-            </StackPanel>
-        </ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+    
+            <Button x:Name="btnMinimiaze" Content="_" Width="30" Height="40" Click="btnMinimiaze_Click"
+           BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
+
+            <Button x:Name="btnMaximize" Content="◘" Width="30" Height="40" Click="btnMaximize_Click"
+           BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
+            <Button x:Name="btnClose" Content="X" Width="30" Height="40" Click="btnClose_Click"
+                BorderBrush="Transparent" Background="Transparent" Foreground="White"/>
+        </StackPanel>
     </Grid>
 </Window>
