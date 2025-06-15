@@ -25,8 +25,8 @@ namespace WPFStartTutorial
             ModelWindow modelWindow = new ModelWindow(this);
             Opacity = 0.7;
             //Open a new window and the main window and any other windows 
-            //will be blocked and 
-
+            //will be blocked  
+            //the execute for Main window stops untill the Model window is closed
             modelWindow.ShowDialog();
             Opacity = 1.0;
             if (modelWindow.Success)
