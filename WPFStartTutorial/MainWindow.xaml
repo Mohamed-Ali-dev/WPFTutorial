@@ -4,17 +4,47 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFStartTutorial"
-        xmlns:userControls="clr-namespace:WPFStartTutorial.View.UserControls"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="400" Width="400">
-    <!--To control the top par od the window-->
-    <Grid >
-        <StackPanel>
-            <Button Name="btnNormal" Width="100" Height="40" 
-                    Content="Normal" Margin="5" Click="btnNormal_Click"/> 
-            <Button Name="btnModel" Width="100" Height="40"
-                    Content="Model" Margin="5" Click="btnModel_Click"/>
-            <TextBox Name="txtInput" Width="200" Height="40" FontSize="20"/>
+        Title="MainWindow" Height="300" Width="300">
+    <!--Style definitions live in a controls resources-->
+    <!--1- firt thing you do when you create a style is Defining its Target type -->
+    <!-- Styles live in different scope level-->
+    
+    <!--<Window.Resources>-->
+
+        <!--<Style TargetType="TextBox">
+            --><!--Setter is used to applay property to all 
+            the target element with specific value -->
+            <!--Now all the textBoxes in the window will 
+            share the same properies-->
+            <!--You can override the Style by adding the
+            property in specific TexTBox--><!--
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Light"/>
+        </Style>-->
+
+    <!--</Window.Resources>-->
+
+        <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel  VerticalAlignment="Center">
+            <StackPanel.Resources>
+                
+            </StackPanel.Resources>
+            <TextBox/>
+            <TextBox Width="240"/>
+            <TextBox/>
+            <Button Content="Normal" Margin="0,5,0,0"/>
+            <Button Content="Normal" Margin="0,5,0,0"/>
         </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Button Style="{StaticResource ConfirmationButton}"/>
+        </Grid>
     </Grid>
 </Window>
