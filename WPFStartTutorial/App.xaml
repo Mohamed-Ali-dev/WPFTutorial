@@ -4,14 +4,6 @@
              xmlns:local="clr-namespace:WPFStartTutorial"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <!--This will merge all this resource dictionaries you add 
-            to a single resource dictionary and then include that in
-            the recources acrross your entire application-->
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/> 
-                <ResourceDictionary Source="Styles/TextBoxStyles.xaml"/> 
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

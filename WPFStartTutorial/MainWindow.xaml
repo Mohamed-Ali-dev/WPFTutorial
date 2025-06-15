@@ -5,46 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFStartTutorial"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="300" Width="300">
-    <!--Style definitions live in a controls resources-->
-    <!--1- firt thing you do when you create a style is Defining its Target type -->
-    <!-- Styles live in different scope level-->
-    
-    <!--<Window.Resources>-->
+        Title="MainWindow" Height="250" Width="400" Background="#333333">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#222222"/>
+            <Setter Property="Foreground" Value="#EEEEEE"/>
+            
+           
+            <!-- We need to override the ControlTemplate of the button to change some properties of it like hover-->
 
-        <!--<Style TargetType="TextBox">
-            --><!--Setter is used to applay property to all 
-            the target element with specific value -->
-            <!--Now all the textBoxes in the window will 
-            share the same properies-->
-            <!--You can override the Style by adding the
-            property in specific TexTBox--><!--
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontWeight" Value="Light"/>
-        </Style>-->
-
-    <!--</Window.Resources>-->
-
-        <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="60"/>
-        </Grid.RowDefinitions>
-        <StackPanel  VerticalAlignment="Center">
-            <StackPanel.Resources>
-                
-            </StackPanel.Resources>
-            <TextBox/>
-            <TextBox Width="240"/>
-            <TextBox/>
-            <Button Content="Normal" Margin="0,5,0,0"/>
-            <Button Content="Normal" Margin="0,5,0,0"/>
-        </StackPanel>
-
-        <Grid Grid.Row="1">
-            <Button Style="{StaticResource ConfirmationButton}"/>
-        </Grid>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <!-- Bind the Border's Background color to our Background in style TargetType="Button" setter -->
+                        <Border Background="{TemplateBinding Background}">
+                            <!-- The ContentPresenter is used to display the content of the button -->
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter> 
+            <!-- First we need a Style.Trigger to trigger the hover and add the property -->
+         <!-- The trigger won't work without redefine the control template -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#0052c1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+             
+        </Style>
+    </Window.Resources>
+    <Grid >
+        <ScrollViewer>
+            <Rectangle Height="1000"/>
+        </ScrollViewer>
+        <!-- the background won't work if the border's BackGround color is hard coded 
+        so we need to bind it to our setter in the style TargetType Button-->
+        <Button Width="100" Height="50" Content="Click Me!"/>
     </Grid>
 </Window>
