@@ -7,3 +7,8 @@
 
     </Application.Resources>
 </Application>
+<!-- 1. App.xaml & App.xaml.cs
+•	Purpose: Entry point for the WPF application.
+•	Flow:
+•	When the application starts, App.xaml and App.xaml.cs initialize the WPF environment and launch the main window (MainWindow).
+    -->
