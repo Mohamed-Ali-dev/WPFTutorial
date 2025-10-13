@@ -18,10 +18,19 @@ namespace WPFStartTutorial.ViewModel
     class MainWindowViewModel : ViewModelBase
     {
         public ObservableCollection<Item> Items { get; set; }
+        // ICommand 
+        // We bind the buttons to relay commands that execute methods in the ViewModel
+        // we need to create RelayCommand which is a class that implements the ICommand interface
+        // We cretaed the relay command in the MVVM folder
+        // Command to add a new item (currently does nothing)
+        public RelayComman AddCommand => new RelayComman(execute => AddItem());
+        public RelayComman DeleteCommand => new RelayComman(execute => DeleteItem(), canExecute => selectedItem != null);
+        public RelayComman SaveCommand => new RelayComman(execute => Save(), canExecute => CanSave());
         public MainWindowViewModel()
         {
-            
+            Items = new ObservableCollection<Item>();
         }
+  
         private Item selectedItem;
         public Item SelectedItem
         {
@@ -29,12 +38,32 @@ namespace WPFStartTutorial.ViewModel
             set 
             {
                 selectedItem = value;
-                // Notify the view that the SelectedItem property has changed
+                //  Notify the view that the SelectedItem property has changed
                 OnPropertyChanged();
             }
         }
         
-     
+     private void AddItem()
+        {
+            Items.Add(new Item
+            {
+                Name = "New Item",
+                SerialNumber = "xxxxx",
+                Quantity = 0
+            });
+        }
+        private void DeleteItem()
+        {
+            Items.Remove(selectedItem);
+        }
+        private void Save()
+        {
+
+        }
+        private bool CanSave()
+        {
+            return true;
+        }
     }
 
 }
