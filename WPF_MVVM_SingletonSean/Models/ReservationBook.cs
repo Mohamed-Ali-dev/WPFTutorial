@@ -15,10 +15,14 @@ namespace WPF_MVVM_SingletonSean.Models
         {
             _reservation = new List<Reservation>();
         }
-        public IEnumerable<Reservation> GetReservationsForUser(string userName)
+        /// <summary>
+        /// Get all reservations.
+        /// </summary>
+        /// <returns>All reservations in the reservation book</returns>
+        public IEnumerable<Reservation> GetAllReservations()
         {
     
-                return _reservation.Where(r => r.UserName == userName);
+                return _reservation;
         }
         public void AddReservation(Reservation reservation)
         {

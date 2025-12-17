@@ -25,7 +25,7 @@ namespace WPF_MVVM_SingletonSean.Models
         public IEnumerable<Reservation> GetReservationsForUser(string userName)
         {
 
-            return _reservationBook.GetReservationsForUser(userName);
+            return _reservationBook.GetAllReservations();
         }
         /// <summary>
         /// Make a reservation

@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using WPF_MVVM_SingletonSean.Exceptions;
 using WPF_MVVM_SingletonSean.Models;
+using WPF_MVVM_SingletonSean.ViewModel;
 
 namespace WPF_MVVM_SingletonSean
 {
@@ -15,33 +16,15 @@ namespace WPF_MVVM_SingletonSean
         {
             Hotel hotel = new Hotel("The Singleton");
 
-            try
-            {
-                hotel.AddReservation(new Reservation(
-                   new RoomID(1, 3),
-
-                   new DateTime(2025, 1, 1),
-                   new DateTime(2025, 1, 5),
-                  "SingltonSean"
-                   ));
-                hotel.AddReservation(new Reservation(
-                    new RoomID(1, 3),
-
-                    new DateTime(2025, 1, 1),
-                    new DateTime(2025, 1, 2),
-                   "SingltonSean"
-                    ));
-            }
-            catch (ReservationConflictException ex)
-            {
-
-                throw;
-            }
+        
        
             IEnumerable<Reservation> reservations =
                 hotel.GetReservationsForUser("SingltonSean");
             base.OnStartup(e);
-            MainWindow = new MainWindow();
+            MainWindow = new MainWindow() { 
+                DataContext = new MainViewModel()
+                };
+
             MainWindow.Show();
         }
     }
