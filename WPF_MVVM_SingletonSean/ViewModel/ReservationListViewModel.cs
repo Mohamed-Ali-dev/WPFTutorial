@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WPF_MVVM_SingletonSean.Command;
 using WPF_MVVM_SingletonSean.Models;
 
 namespace WPF_MVVM_SingletonSean.ViewModel
@@ -19,6 +20,7 @@ namespace WPF_MVVM_SingletonSean.ViewModel
         {
             _reservations = new ObservableCollection<ReservationViewModel>();
 
+            MakeReservationCommand = new NavigateCommand();
             _reservations.Add(new ReservationViewModel(new Reservation(new RoomID(1, 2),  DateTime.Now, DateTime.Now, "Costa")));
             _reservations.Add(new ReservationViewModel(new Reservation(new RoomID(3, 2),  DateTime.Now, DateTime.Now, "ali")));
             _reservations.Add(new ReservationViewModel(new Reservation(new RoomID(2, 4),  DateTime.Now, DateTime.Now, "harem")));

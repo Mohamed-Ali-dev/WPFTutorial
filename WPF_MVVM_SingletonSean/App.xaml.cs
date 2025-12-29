@@ -12,20 +12,21 @@ namespace WPF_MVVM_SingletonSean
     /// </summary>
     public partial class App : Application
     {
+        private readonly Hotel _hotel;
+        public App()
+        {
+            _hotel = new Hotel("The Singleton");
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
-            Hotel hotel = new Hotel("The Singleton");
-
-        
-       
-            IEnumerable<Reservation> reservations =
-                hotel.GetReservationsForUser("SingltonSean");
-            base.OnStartup(e);
-            MainWindow = new MainWindow() { 
-                DataContext = new MainViewModel()
-                };
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel(_hotel)
+            };
 
             MainWindow.Show();
+            base.OnStartup(e);
+    
         }
     }
 

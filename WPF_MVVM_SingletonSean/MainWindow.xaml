@@ -11,6 +11,10 @@
         Width="800"
         FontSize="14">
     <Grid MaxWidth="600" Margin="20 10">
-        <Views:MakeReservationView  DataContext="{Binding CurrentViewModel}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="311*"/>
+            <RowDefinition Height="103*"/>
+        </Grid.RowDefinitions>
+        <Views:ReservationListingView  DataContext="{Binding CurrentViewModel}" Margin="0,0,160,0" Grid.RowSpan="2"/>
     </Grid>
 </Window>

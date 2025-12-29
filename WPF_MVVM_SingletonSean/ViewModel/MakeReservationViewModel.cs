@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF_MVVM_SingletonSean.Command;
+using WPF_MVVM_SingletonSean.Models;
 
 namespace WPF_MVVM_SingletonSean.ViewModel
 {
@@ -45,7 +46,7 @@ namespace WPF_MVVM_SingletonSean.ViewModel
             }
         }
         //StartDate
-        private DateTime _startDate;
+        private DateTime _startDate = new DateTime(2025, 1, 1);
 
         public DateTime StartDate
         {
@@ -58,7 +59,7 @@ namespace WPF_MVVM_SingletonSean.ViewModel
             }
         }
         //EndDate
-        private DateTime _endDate;
+        private DateTime _endDate = new DateTime(2025, 1, 8);
 
         public DateTime EndDate
         {
@@ -73,9 +74,10 @@ namespace WPF_MVVM_SingletonSean.ViewModel
         //SubmitCommand
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
-        public MakeReservationViewModel()
+        public MakeReservationViewModel(Hotel hotel)
         {
-            SubmitCommand = new MakeReservationCommand();
+            SubmitCommand = new MakeReservationCommand(this , hotel);
+            CancelCommand = new CancelMakeReservationCommand();
         }
 
     }
